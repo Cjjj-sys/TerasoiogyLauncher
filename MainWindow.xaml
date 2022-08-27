@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TerasoiogyLauncher"
         xmlns:vm="clr-namespace:TerasoiogyLauncher.ViewModels"
+        xmlns:view="clr-namespace:TerasoiogyLauncher.Views"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
@@ -21,61 +22,89 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Button.xaml" />
+                <ResourceDictionary Source="DataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Window.OpacityMask>
-        <VisualBrush Visual="{Binding ElementName=BorderContent}" />
-    </Window.OpacityMask>
-    <Border x:Name="BorderWindow"
-        CornerRadius="10"
-            Background="White">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Border x:Name="TitleBorder"
-                    MouseLeftButtonDown="TitleBorder_MouseLeftButtonDown"
-                    Background="#99f3bd">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Margin="10, 4"
-                               FontSize="16"
-                               Text="TerasoiogyLauncher" />
-                    <Button Style="{DynamicResource ButtonStyleMinimum}"
-                            Grid.Column="1"
-                            Width="32"
-                            Background="Transparent"
-                            Command="{Binding MinimumCommand}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}">
-                        <Path Fill="Black"
-                              Data="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
-                    </Button>
-                    <Button Style="{DynamicResource ButtonStyleClose}"
-                            Grid.Column="2"
-                            Width="32"
-                            Background="Transparent"
-                            Command="{Binding CloseCommand}">
-                        <Path Fill="Black"
-                              Data="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" />
-                    </Button>
+    <Grid>
+        <Grid.OpacityMask>
+            <VisualBrush Visual="{Binding ElementName=CoolBorder}" />
+        </Grid.OpacityMask>
+        <Border x:Name="CoolBorder"
+                CornerRadius="10"
+                Background="White" />
+        <Border x:Name="BorderWindow"
+                CornerRadius="10"
+                Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border x:Name="TitleBorder"
+                        MouseLeftButtonDown="TitleBorder_MouseLeftButtonDown"
+                        Background="#28df99"
+                        CornerRadius="10,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Margin="10, 4"
+                                   FontSize="16"
+                                   Text="TerasoiogyLauncher" />
+                        <Button Style="{DynamicResource ButtonStyleMinimum}"
+                                Grid.Column="1"
+                                Width="32"
+                                Background="Transparent"
+                                Command="{Binding MinimumCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}">
+                            <Path Fill="Black"
+                                  Data="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
+                        </Button>
+                        <Button Style="{DynamicResource ButtonStyleClose}"
+                                Grid.Column="2"
+                                Width="32"
+                                Background="Transparent"
+                                Command="{Binding CloseCommand}">
+                            <Path Fill="Black"
+                                  Data="M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z" />
+                        </Button>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=BorderContent}" />
+                    </Grid.OpacityMask>
+                    <Border x:Name="BorderContent"
+                            CornerRadius="10"
+                            Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*" />
+                                <ColumnDefinition Width="85*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#99f3bd">
+                                <StackPanel>
+                                    <Button Content="Home"
+                                            Background="#d2f6c5"
+                                            Command="{Binding NavigateToCommand}"
+                                            CommandParameter="Home" />
+                                    <Button Content="DownloadGame"
+                                            Background="#d2f6c5"
+                                            Command="{Binding NavigateToCommand}"
+                                            CommandParameter="DownloadGame" />
+                                </StackPanel>
+                            </Border>
+
+                            <ContentControl Grid.Column="1"
+                                            Content="{Binding CurrentViewModel}" />
+                        </Grid>
+                    </Border>
                 </Grid>
-            </Border>
-            <Grid Grid.Row="1">
-                <Grid.OpacityMask>
-                    <VisualBrush Visual="{Binding ElementName=BorderContent}" />
-                </Grid.OpacityMask>
-                <Border x:Name="BorderContent"
-                        CornerRadius="10"
-                        Background="White" />
-               
             </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 </Window>

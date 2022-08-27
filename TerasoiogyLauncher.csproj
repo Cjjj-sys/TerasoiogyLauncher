@@ -16,7 +16,6 @@
     <Folder Include="Resources\" />
     <Folder Include="Services\" />
     <Folder Include="Utils\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
 	<Target Name="RemoveDuplicateAnalyzers" BeforeTargets="CoreCompile">

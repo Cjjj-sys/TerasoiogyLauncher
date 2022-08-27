@@ -84,7 +84,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBackground"
                                                         Storyboard.TargetProperty="Color"
-                                                        From="#99f3bd"
+                                                        From="#28df99"
                                                         To="#FFC2E6D1"
                                                         Duration="0:0:0.3" />
                                     </Storyboard>
@@ -96,7 +96,7 @@
                                         <ColorAnimation Storyboard.TargetName="BorderBackground"
                                                         Storyboard.TargetProperty="Color"
                                                         From="#FFC2E6D1"
-                                                        To="#99f3bd"
+                                                        To="#28df99"
                                                         Duration="0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -181,7 +181,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="BorderBackground"
                                                         Storyboard.TargetProperty="Color"
-                                                        From="#99f3bd"
+                                                        From="#28df99"
                                                         To="#FFF67F7F"
                                                         Duration="0:0:0.3" />
                                     </Storyboard>
@@ -193,7 +193,7 @@
                                         <ColorAnimation Storyboard.TargetName="BorderBackground"
                                                         Storyboard.TargetProperty="Color"
                                                         From="#FFF67F7F"
-                                                        To="#99f3bd"
+                                                        To="#28df99"
                                                         Duration="0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
