@@ -10,6 +10,8 @@
         Height="450"
         Width="800"
         WindowStyle="None"
+        MaxHeight="650"
+        MaxWidth="1200"
         AllowsTransparency="True"
         Background="Transparent">
     <Window.DataContext>
@@ -22,7 +24,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Border CornerRadius="10"
+    <Window.OpacityMask>
+        <VisualBrush Visual="{Binding ElementName=BorderContent}" />
+    </Window.OpacityMask>
+    <Border x:Name="BorderWindow"
+        CornerRadius="10"
             Background="White">
         <Grid>
             <Grid.RowDefinitions>
@@ -31,38 +37,29 @@
             </Grid.RowDefinitions>
             <Border x:Name="TitleBorder"
                     MouseLeftButtonDown="TitleBorder_MouseLeftButtonDown"
-                    Background="#99f3bd"
-                    CornerRadius="10">
+                    Background="#99f3bd">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <Rectangle HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom"
-                               Height="12.5"
-                               Width="12.5"
-                               Fill="#99f3bd" />
-                    <Rectangle HorizontalAlignment="Right"
-                               VerticalAlignment="Bottom"
-                               Height="12.5"
-                               Width="12.5"
-                               Fill="#99f3bd"
-                               Grid.Column="3" />
                     <TextBlock Grid.Column="0"
                                Margin="10, 4"
                                FontSize="16"
                                Text="TerasoiogyLauncher" />
                     <Button Style="{DynamicResource ButtonStyleMinimum}"
                             Grid.Column="1"
-                            Background="Transparent">
+                            Width="32"
+                            Background="Transparent"
+                            Command="{Binding MinimumCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}">
                         <Path Fill="Black"
                               Data="M19.5,3.09L15,7.59V4H13V11H20V9H16.41L20.91,4.5L19.5,3.09M4,13V15H7.59L3.09,19.5L4.5,20.91L9,16.41V20H11V13H4Z" />
                     </Button>
                     <Button Style="{DynamicResource ButtonStyleClose}"
                             Grid.Column="2"
+                            Width="32"
                             Background="Transparent"
                             Command="{Binding CloseCommand}">
                         <Path Fill="Black"
@@ -70,6 +67,15 @@
                     </Button>
                 </Grid>
             </Border>
+            <Grid Grid.Row="1">
+                <Grid.OpacityMask>
+                    <VisualBrush Visual="{Binding ElementName=BorderContent}" />
+                </Grid.OpacityMask>
+                <Border x:Name="BorderContent"
+                        CornerRadius="10"
+                        Background="White" />
+               
+            </Grid>
         </Grid>
     </Border>
 </Window>

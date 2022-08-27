@@ -12,6 +12,10 @@ namespace TerasoiogyLauncher
 
         private void TitleBorder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
             this.DragMove();
         }
     }
