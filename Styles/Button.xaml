@@ -5,11 +5,6 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="2"
-                               StrokeDashArray="1 2"
-                               Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                               SnapsToDevicePixels="true"
-                               StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -224,5 +219,126 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Color x:Key="Navigate.Color.HighlightBackground">#B2D2F6C5</Color>
+    <Color x:Key="Navigate.Color.NormalBackground">#d2f6c5</Color>
+    <Color x:Key="Navigate.Color.NormalIndicatorBackground">#28df99</Color>
+    <SolidColorBrush x:Key="Navigate.HighlightBackground"
+                     Color="{StaticResource Navigate.Color.HighlightBackground}" />
+    <SolidColorBrush x:Key="Navigate.NormalBackground"
+                     Color="{StaticResource Navigate.Color.NormalBackground}" />
+    <SolidColorBrush x:Key="Navigate.NormalIndicatorBackground"
+                     Color="{StaticResource Navigate.Color.NormalIndicatorBackground}" />
+    <Style x:Key="RadioButtonStyleNavigate"
+           TargetType="RadioButton">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0,5,0,0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border x:Name="border"
+                            Height="45"
+                            Width="{TemplateBinding Width}"
+                            BorderThickness="0">
+
+                        <Border.Background>
+                            <SolidColorBrush x:Name="BorderBackground"
+                                             Color="{StaticResource Navigate.Color.NormalBackground}" />
+                        </Border.Background>
+
+                        <Grid>
+
+                            <Border x:Name="Indicator"
+                                    Height="30"
+                                    Width="4"
+                                    Margin="2, 0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Visibility="Visible"
+                                    CornerRadius="2">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="IndicatorBackground"
+                                                     Color="Transparent" />
+                                </Border.Background>
+                            </Border>
+
+                            <ContentPresenter />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="Border.MouseEnter"
+                                      SourceName="border">
+
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="IndicatorBackground"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="Transparent"
+                                                    To="{StaticResource Navigate.Color.NormalIndicatorBackground}"
+                                                    Duration="0:0:0.3">
+                                        <ColorAnimation.EasingFunction>
+                                            <PowerEase EasingMode="EaseInOut" />
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                    <ColorAnimation Storyboard.TargetName="BorderBackground"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource Navigate.Color.NormalBackground}"
+                                                    To="{StaticResource Navigate.Color.HighlightBackground}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Border.MouseLeave"
+                                      SourceName="border">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="IndicatorBackground"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource Navigate.Color.NormalIndicatorBackground}"
+                                                    To="Transparent"
+                                                    Duration="0:0:0.5" />
+                                    <ColorAnimation Storyboard.TargetName="BorderBackground"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="{StaticResource Navigate.Color.HighlightBackground}"
+                                                    To="{StaticResource Navigate.Color.NormalBackground}"
+                                                    Duration="0:0:0.3" />
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource Navigate.HighlightBackground}" />
+
+                            <Setter Property="Background"
+                                    TargetName="Indicator"
+                                    Value="{StaticResource Navigate.NormalIndicatorBackground}" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
     </Style>
 </ResourceDictionary>

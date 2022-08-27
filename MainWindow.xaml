@@ -87,16 +87,55 @@
                                 <ColumnDefinition Width="85*" />
                             </Grid.ColumnDefinitions>
                             <Border Background="#99f3bd">
-                                <StackPanel>
-                                    <Button Content="Home"
-                                            Background="#d2f6c5"
-                                            Command="{Binding NavigateToCommand}"
-                                            CommandParameter="Home" />
-                                    <Button Content="DownloadGame"
-                                            Background="#d2f6c5"
-                                            Command="{Binding NavigateToCommand}"
-                                            CommandParameter="DownloadGame" />
-                                </StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <RadioButton Style="{DynamicResource RadioButtonStyleNavigate}"
+                                                 Background="#d2f6c5"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="Home"
+                                                 IsChecked="True"
+                                                 HorizontalAlignment="Stretch">
+                                        <Grid>
+                                            <TextBlock Text="主页"
+                                                       FontSize="16"
+                                                       Margin="0,0,20,0"
+                                                       HorizontalAlignment="Right" 
+                                                       VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </RadioButton>
+                                    <RadioButton
+                                                 Grid.Row="1"
+                                                 Style="{DynamicResource RadioButtonStyleNavigate}"
+                                                 Background="#d2f6c5"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="DownloadGame"
+                                                 HorizontalAlignment="Stretch">
+                                        <Grid>
+                                            <TextBlock Text="下载游戏"
+                                                       FontSize="16"
+                                                       Margin="0,0,20,0"
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Center" />
+                                        </Grid>
+                                    </RadioButton>
+                                    <RadioButton Grid.Row="2"
+                                                 Style="{DynamicResource RadioButtonStyleNavigate}"
+                                                 Background="#d2f6c5"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="DevTest"
+                                                 HorizontalAlignment="Stretch">
+                                        <TextBlock Text="DevTest"
+                                                   FontSize="16"
+                                                   Margin="0,0,20,0"
+                                                   HorizontalAlignment="Right"
+                                                   VerticalAlignment="Center" />
+                                    </RadioButton>
+                                </Grid>
                             </Border>
 
                             <ContentControl Grid.Column="1"

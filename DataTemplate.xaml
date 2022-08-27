@@ -8,4 +8,7 @@
     <DataTemplate DataType="{x:Type vm:DownloadGameViewModel}">
         <view:DownloadGameView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DevTestViewModel}">
+        <view:DevTestView />
+    </DataTemplate>
 </ResourceDictionary>

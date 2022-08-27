@@ -15,6 +15,7 @@ namespace TerasoiogyLauncher
             if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
+                return;
             }
             this.DragMove();
         }
