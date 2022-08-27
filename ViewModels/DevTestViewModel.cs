@@ -22,12 +22,19 @@ namespace TerasoiogyLauncher.ViewModels
         [RelayCommand]
         private async void Excute()
         {
-            var input = ToExcuteCommand.Split(' ').ToList();
-            var command = input[0];
-            input.RemoveAt(0);
-            var args = input;
-            var cmd = Cli.Wrap(command).WithArguments(args) | PipeTarget.ToDelegate(output => OutputResult += output + Environment.NewLine);
-            await cmd.ExecuteBufferedAsync();
+            try
+            {
+                var input = ToExcuteCommand.Split(' ').ToList();
+                var command = input[0];
+                input.RemoveAt(0);
+                var args = input;
+                var cmd = Cli.Wrap(command).WithArguments(args) | PipeTarget.ToDelegate(output => OutputResult += output + Environment.NewLine);
+                await cmd.ExecuteBufferedAsync();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"草率地处理一下异常: \n{e.Message}", e.Source, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         [RelayCommand]
         private void ShowOutputs()
