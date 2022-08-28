@@ -18,6 +18,7 @@ namespace TerasoiogyLauncher.ViewModels
         private HomeViewModel _homeViewModel = new();
         private DownloadGameViewModel _downloadGameViewModel = new();
         private DevTestViewModel _devTestViewModel = Ioc.Default.GetRequiredService<DevTestViewModel>();
+        private DevControlsViewModel _devControlsViewModel = new();
 
         [ObservableProperty]
         private INotifyPropertyChanged _currentViewModel;
@@ -48,6 +49,7 @@ namespace TerasoiogyLauncher.ViewModels
                 "Home" => _homeViewModel,
                 "DownloadGame" => _downloadGameViewModel,
                 "DevTest" => _devTestViewModel,
+                "DevControls" => _devControlsViewModel
             };
         }
     }

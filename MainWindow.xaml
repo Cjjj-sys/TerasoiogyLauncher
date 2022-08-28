@@ -83,8 +83,8 @@
                             Background="White">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*" />
-                                <ColumnDefinition Width="85*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="80*" />
                             </Grid.ColumnDefinitions>
                             <Border Background="#99f3bd">
                                 <Grid>
@@ -92,7 +92,7 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
-                                        <RowDefinition />
+                                        <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
                                     <RadioButton Style="{DynamicResource RadioButtonStyleNavigate}"
                                                  Background="#d2f6c5"
@@ -130,6 +130,18 @@
                                                  CommandParameter="DevTest"
                                                  HorizontalAlignment="Stretch">
                                         <TextBlock Text="DevTest"
+                                                   FontSize="16"
+                                                   Margin="0,0,20,0"
+                                                   HorizontalAlignment="Right"
+                                                   VerticalAlignment="Center" />
+                                    </RadioButton>
+                                    <RadioButton Grid.Row="3"
+                                                 Style="{DynamicResource RadioButtonStyleNavigate}"
+                                                 Background="#d2f6c5"
+                                                 Command="{Binding NavigateToCommand}"
+                                                 CommandParameter="DevControls"
+                                                 HorizontalAlignment="Stretch">
+                                        <TextBlock Text="DevControls"
                                                    FontSize="16"
                                                    Margin="0,0,20,0"
                                                    HorizontalAlignment="Right"

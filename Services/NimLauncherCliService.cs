@@ -7,56 +7,55 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace TerasoiogyLauncher.Services
+namespace TerasoiogyLauncher.Services;
+
+public class NimLauncherCliService : INimLauncherCliService
 {
-    public class NimLauncherCliService : INimLauncherCliService
+    public async Task<bool> InitAsync()
     {
-        public async Task<bool> InitAsync()
+        try
         {
-            try
-            {
-                await Cli.Wrap("Main.exe").WithArguments("init").ExecuteAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
+            await Cli.Wrap("Main.exe").WithArguments("init").ExecuteAsync();
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
         }
 
-        public async Task DownloadGameAsync(string version, Action<string, double?, string?> progressBarAction)
+    }
+
+    public async Task DownloadGameAsync(string version, Action<string, double?, string?> progressBarAction)
+    {
+        var cli = Cli.Wrap("Main.exe").WithArguments(new string[] { "download_game", version }) | PipeTarget.ToDelegate(output =>
         {
-            var cli = Cli.Wrap("Main.exe").WithArguments(new string[] { "download_game", version }) | PipeTarget.ToDelegate(output =>
+            double? progress = null;
+            string? speed = null;
+            if (output.StartsWith("Downloaded"))
             {
-                double? progress = null;
-                string? speed = null;
-                if (output.StartsWith("Downloaded"))
+                bool isDownloadBytes = double.TryParse(output.Split(' ')[1], out double downloadBytes);
+                bool isTotalBytes = double.TryParse(output.Split(' ')[3], out double totalBytes);
+                if (isDownloadBytes && isTotalBytes)
                 {
-                    bool isDownloadBytes = double.TryParse(output.Split(' ')[1], out double downloadBytes);
-                    bool isTotalBytes = double.TryParse(output.Split(' ')[3], out double totalBytes);
-                    if (isDownloadBytes && isTotalBytes)
-                    {
-                        progress = (downloadBytes / totalBytes) * 100;
-                    }
-                    else
-                    {
-                        progress = null;
-                    }
+                    progress = (downloadBytes / totalBytes) * 100;
                 }
-                if (output.StartsWith("Current rate"))
+                else
                 {
-                    speed = output.Split(' ')[2];
+                    progress = null;
                 }
-                if (output == "")
-                {
-                    progress = 100;
-                    speed = "下载完成";
-                }
-                
-                progressBarAction.Invoke(output, progress, speed);
-            });
-            await cli.ExecuteBufferedAsync();
-        }
+            }
+            else if (output.StartsWith("Current rate"))
+            {
+                speed = output.Split(' ')[2];
+            }
+            if (output == "")
+            {
+                progress = 100;
+                speed = "下载完成";
+            }
+            
+            progressBarAction.Invoke(output, progress, speed);
+        });
+        await cli.ExecuteBufferedAsync();
     }
 }

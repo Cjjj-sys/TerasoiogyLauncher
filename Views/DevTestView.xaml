@@ -27,11 +27,19 @@
                     <TextBox Grid.Column="1"
                              Text="{Binding ToDownloadVersion}" />
                 </Grid>
-                <ProgressBar Height="20" Value="{Binding Progress}" />
-                <Button Content="Excute"
-                        Command="{Binding ExcuteCommand}" />
+                <ProgressBar Height="20"
+                             Value="{Binding Progress}" />
+                <Button Style="{DynamicResource ButtonStyleNormal}"
+                        FontSize="18"
+                        Margin="5"
+                        Content="Excute"
+                        Command="{Binding ExcuteCommand}">
+                </Button>
                 <TextBox Text="{Binding OutputResult}" />
-                <Button Content="ShowOutputs"
+                <Button Style="{DynamicResource ButtonStyleNormal}"
+                        FontSize="18"
+                        Margin="5"
+                    Content="ShowOutputs"
                         Command="{Binding ShowOutputsCommand}" />
             </StackPanel>
         </Grid>

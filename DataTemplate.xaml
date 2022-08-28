@@ -11,4 +11,7 @@
     <DataTemplate DataType="{x:Type vm:DevTestViewModel}">
         <view:DevTestView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DevControlsViewModel}">
+        <view:DevControlsView />
+    </DataTemplate>
 </ResourceDictionary>
