@@ -18,7 +18,16 @@
     <Border Background="#f6f7d4">
         <Grid>
             <StackPanel Margin="5">
-                <TextBox Text="{Binding ToExcuteCommand}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="输入你要下载的版本号: "></Label>
+                    <TextBox Grid.Column="1"
+                             Text="{Binding ToDownloadVersion}" />
+                </Grid>
+                <ProgressBar Height="20" Value="{Binding Progress}" />
                 <Button Content="Excute"
                         Command="{Binding ExcuteCommand}" />
                 <TextBox Text="{Binding OutputResult}" />

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace TerasoiogyLauncher.ViewModels
         }
         private HomeViewModel _homeViewModel = new();
         private DownloadGameViewModel _downloadGameViewModel = new();
-        private DevTestViewModel _devTestViewModel = new();
+        private DevTestViewModel _devTestViewModel = Ioc.Default.GetRequiredService<DevTestViewModel>();
 
         [ObservableProperty]
         private INotifyPropertyChanged _currentViewModel;
