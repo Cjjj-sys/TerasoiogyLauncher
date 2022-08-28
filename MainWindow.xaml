@@ -1,11 +1,10 @@
 ﻿<Window x:Class="TerasoiogyLauncher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TerasoiogyLauncher"
         xmlns:vm="clr-namespace:TerasoiogyLauncher.ViewModels"
-        xmlns:view="clr-namespace:TerasoiogyLauncher.Views"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
@@ -104,12 +103,11 @@
                                             <TextBlock Text="主页"
                                                        FontSize="16"
                                                        Margin="0,0,20,0"
-                                                       HorizontalAlignment="Right" 
-                                                       VerticalAlignment="Center"/>
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Center" />
                                         </Grid>
                                     </RadioButton>
-                                    <RadioButton
-                                                 Grid.Row="1"
+                                    <RadioButton Grid.Row="1"
                                                  Style="{DynamicResource RadioButtonStyleNavigate}"
                                                  Background="#d2f6c5"
                                                  Command="{Binding NavigateToCommand}"

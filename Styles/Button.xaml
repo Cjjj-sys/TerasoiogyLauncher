@@ -59,7 +59,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="borderOuter" Padding="0" Margin="0">
+                    <Border x:Name="borderOuter"
+                            Padding="0"
+                            Margin="0">
                         <Border x:Name="border"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Padding="0"
@@ -67,7 +69,8 @@
                                 SnapsToDevicePixels="true"
                                 CornerRadius="5">
                             <Border.Background>
-                                <SolidColorBrush x:Name="borderBackground" Color="{StaticResource Button.Normal.Background}" />
+                                <SolidColorBrush x:Name="borderBackground"
+                                                 Color="{StaticResource Button.Normal.Background}" />
                             </Border.Background>
                             <ContentPresenter x:Name="contentPresenter"
                                               Focusable="False"
@@ -92,9 +95,9 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="borderBackground"
                                                         Storyboard.TargetProperty="Color"
-                                                         From="{StaticResource Button.Normal.Background}"
-                                                         To="{StaticResource Button.Highlight.Background}"
-                                                         Duration="0:0:0.1">
+                                                        From="{StaticResource Button.Normal.Background}"
+                                                        To="{StaticResource Button.Highlight.Background}"
+                                                        Duration="0:0:0.1">
                                             <ColorAnimation.EasingFunction>
                                                 <PowerEase EasingMode="EaseInOut" />
                                             </ColorAnimation.EasingFunction>
@@ -398,9 +401,7 @@
                             </Border>
 
                             <ContentPresenter />
-
                         </Grid>
-
                     </Border>
 
                     <ControlTemplate.Triggers>
@@ -426,7 +427,6 @@
                                                     Duration="0:0:0.3" />
                                 </Storyboard>
                             </BeginStoryboard>
-
                         </EventTrigger>
 
                         <EventTrigger RoutedEvent="Border.MouseLeave"
@@ -445,7 +445,6 @@
                                                     Duration="0:0:0.3" />
                                 </Storyboard>
                             </BeginStoryboard>
-
                         </EventTrigger>
 
                         <Trigger Property="IsChecked"
@@ -458,14 +457,10 @@
                             <Setter Property="Background"
                                     TargetName="Indicator"
                                     Value="{StaticResource Navigate.NormalIndicatorBackground}" />
-
                         </Trigger>
-
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
     </Style>
 </ResourceDictionary>

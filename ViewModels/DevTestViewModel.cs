@@ -1,12 +1,6 @@
-﻿using CliWrap;
-using CliWrap.Buffered;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using TerasoiogyLauncher.Services;
 
@@ -19,12 +13,16 @@ namespace TerasoiogyLauncher.ViewModels
         {
             this.nimLauncherCliService = nimLauncherCliService;
         }
+
         [ObservableProperty]
         private string _toDownloadVersion;
+
         [ObservableProperty]
         private double _progress = 0;
+
         [ObservableProperty]
         private string _outputResult;
+
         private readonly INimLauncherCliService nimLauncherCliService;
 
         [RelayCommand]
@@ -49,6 +47,7 @@ namespace TerasoiogyLauncher.ViewModels
                 MessageBox.Show($"草率地处理一下异常: \n{e.Message}", e.Source, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         [RelayCommand]
         private void ShowOutputs()
         {

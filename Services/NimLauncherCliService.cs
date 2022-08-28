@@ -1,11 +1,7 @@
 ﻿using CliWrap;
 using CliWrap.Buffered;
 using System;
-using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Animation;
 
 namespace TerasoiogyLauncher.Services;
 
@@ -22,7 +18,6 @@ public class NimLauncherCliService : INimLauncherCliService
         {
             return false;
         }
-
     }
 
     public async Task DownloadGameAsync(string version, Action<string, double?, string?> progressBarAction)
@@ -53,7 +48,7 @@ public class NimLauncherCliService : INimLauncherCliService
                 progress = 100;
                 speed = "下载完成";
             }
-            
+
             progressBarAction.Invoke(output, progress, speed);
         });
         await cli.ExecuteBufferedAsync();
