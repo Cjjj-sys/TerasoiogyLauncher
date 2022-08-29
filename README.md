@@ -6,7 +6,7 @@
   - [X] Init
   - [X] DownloadGame
   - [ ] InstallGame
-  - [ ] DownlaodJRE
+  - [X] DownlaodJRE
   - [ ] InstallJRE
   - etc.
 - [ ] 完成基本控件的绘制
